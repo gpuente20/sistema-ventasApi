@@ -10,7 +10,7 @@ generator client {
 
 datasource db {
   provider = "mysql"
-  url      = "mysql://admin:papasyhuevo@sistema-ventas.chkywoe2qfde.us-east-1.rds.amazonaws.com:3306/sistema-ventas"
+  url      = "mysql://admin:Cesar2024@database.c9mio40mamx5.us-east-2.rds.amazonaws.com:3306/db_sistemas"
 }
 
 //comando
