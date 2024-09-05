@@ -1,0 +1,41 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = "mysql://admin:papasyhuevo@sistema-ventas.chkywoe2qfde.us-east-1.rds.amazonaws.com:3306/sistema-ventas"
+}
+
+//comando
+//npx prisma generate
+
+model Rol {
+  cveRol      Int     @id @default(autoincrement())
+  descripcion String  @db.VarChar(250)
+  clave       String  @db.VarChar(45)
+  activo      Boolean @db.TinyInt()
+
+  Usuario Usuario[]
+
+  @@map("rol")
+}
+
+model Usuario {
+  cveUsuario    Int      @id @default(autoincrement())
+  nombre        String
+  apellidos     String
+  username      String   @unique
+  password      String
+  fechaRegistro DateTime @default(now())
+  cveRol        Int
+  rol           Rol      @relation(fields: [cveRol], references: [cveRol])
+
+  @@map("tbl_usuario")
+}
